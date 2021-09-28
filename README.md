@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+. . <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -6,6 +6,42 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+
+## Local Deploy
+
+Follow these steps for local enviroment setup.
+
+0. Install Composer and Node JS if you don'tnhave them.
+1. Clone the repository.
+2. Start Aapche and MySQL services if you are using XAMPP.
+3. Create a databse in your DB Manager.
+5. Edit the .env file, expecially information about application and database.
+6. Run the following command in the same order:
+	- composer install
+	- npm install
+	- npm run dev
+	- php artisan migrate
+	- php artisan db:seed
+	- php artisan serve
+	
+If everything is fine you can open your app on http://localhost:8000 if not fix the errors shown in the termin in order to enable the app to run.
+
+## Server Deploy
+
+1Follow these steps and setup the production Docker enviroment setup for the app.
+
+0. Please be sure you have installed certbot, docker, docker-compose and nginx on your server.
+1. In /home/docker create a folder named 'brucifer' and inside create 2 subfolders: 'app', 'db'.
+2. In the app folder clone the repository.
+3. From the repository open subfolder 'docker' and copy the docker-compose.yml to the root of 'brucifer' folder on server. Also, copy everthing from other subfolders in the same way on the server.
+4. Create a new DNS A record for the apropriate subdomain.
+5. From the nginx subfolder copy the server.conf into '/etc/nginx/sites-available' and change the respective subdomain. Also, after that create a symbolic link to this file in '/etc/nginx/sites-enabled/'.
+6. Run certbot and create a certificate for the subdomain without redirects. In the server configuration file change the name of certificates according to your domain.
+7. From the root 'brucifer' folder edit docker-compose.yml so that the given locations are linked properly as well as available ports.
+8. From 'brucifer/app' copy 'apache_conf' and edit subdomain name.
+9. return to 'brucifer' root folder and run: sudo docker-compose up -d --build --force-recreate --no-deps 
+10. If everything is fine your app will work on your subdomain, if not, check with 'sudo docker-compose ps' if the container is running or run 'sudo docker logs container_name' for more information.
+
 
 ## About Laravel
 

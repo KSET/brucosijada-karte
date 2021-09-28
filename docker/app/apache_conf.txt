@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+        ServerName brucifer.estudent.hr
+        ServerAdmin webmaster@estudent.hr
+        #referring the user to the recipes application
+        DocumentRoot /var/www/bucosijada-karte/public
+
+        <Directory /var/www/brucosijada-karte/public>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteRule ^(.*)$ index.php [QSA,L]
+                # Uncomment this directive is you want to see apache2's
+                # default start page (in /apache2-default) when you go to /
+                #RedirectMatch ^/$ /apache2-default/
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        Custom
