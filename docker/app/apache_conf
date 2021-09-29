@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+        ServerName #domain
+        ServerAdmin #email@domain
+        DocumentRoot /var/www/brucosijada-karte/public
+
+        <Directory /var/www/brucosijada-karte/public>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteRule ^(.*)$ index.php [QSA,L]
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        
+</VirtualHost>
