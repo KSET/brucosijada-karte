@@ -41,7 +41,7 @@ RUN php artisan key:generate
 #Apache
 COPY apache_conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite ssl && a2enmod rewrite headers
-RUN echo "ServerName brucifer-app.local" >> /etc/apache2/apache2.conf
+#RUN echo "ServerName brucifer-app.local" >> /etc/apache2/apache2.conf
 CMD . /etc/apache2/envvars && exec /usr/sbin/apache2 -DFOREGROUND
 RUN apache2ctl start
 
