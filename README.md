@@ -1,6 +1,6 @@
 # BRUCIFER 
 
-Web application for selling tickets to freshmen students and registrating 
+Web application for selling tickets to freshmen students and registrating entered guests on festival.
 
 ## Local Deploy
 
