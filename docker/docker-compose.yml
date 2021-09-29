@@ -1,0 +1,35 @@
+version: '3.5'
+
+services:
+
+  brucifer-db:
+    container_name: brucifer_db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_DATABASE: brucifer
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+
+  brucifer-app:
+    build:
+      context: ./app
+      args:
+        uid: 1000
+    container_name: brucifer_app
+    environment:
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
+    depends_on:
+      - brucifer-db
+    restart: always
+    volumes:
+      - ./app/brucosijada-karte:/var/www/html/brucosijada-karte
+    ports:
+      - 1311:80
+
+networks:
+   default:
