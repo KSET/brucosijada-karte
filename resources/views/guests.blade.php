@@ -115,16 +115,16 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': '{{ csrf_token() }}'
     }
 });
-
-$('.update').editable({
-    url: "{{ route('update_guest') }}",
-    type: 'text',
-    pk: 1,
-    name: 'name',
-    title: 'Enter name'
+$( document ).ready(function() {
+    $('.update').editable({
+        url: "{{ route('update_guest') }}",
+        type: 'text',
+        pk: 1,
+        name: 'name',
+        title: 'Enter name'
+    });
 });
 
-+
 
 $(".deleteProduct").click(function(){
 	    	$(this).parents('tr').hide();
