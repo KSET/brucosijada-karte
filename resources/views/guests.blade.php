@@ -113,7 +113,8 @@ $.fn.editable.defaults.mode = 'inline';
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': '{{ csrf_token() }}'
-    }
+    },
+    type: 'POST'
 });
 
 $('.update').editable({
@@ -123,25 +124,6 @@ $('.update').editable({
     name: 'name',
     title: 'Enter name'
 });
-
-+
-
-$(".deleteProduct").click(function(){
-	    	$(this).parents('tr').hide();
-	        var id = $(this).data("id");
-	        var token = '{{ csrf_token() }}';
-	        $.ajax(
-	        {
-	            method:'POST',
-	            url: "/delete/guest/"+id,
-	            data: {_token: token},
-	            success: function(data)
-	            {
-	                toastr.success('Successfully!','Delete');
-                    window.location.reload();
-	            }
-	        });
-	    });
 
 $(".buyTicket").click(function(){
 	        var id = $(this).data("id");
