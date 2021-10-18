@@ -18,7 +18,7 @@
                     <div class="alert alert-info">{{ Session::get('message') }}</div>
                     @endif
                      @csrf
-                     @if (Auth::user()->role == 1) 
+                     @if (Auth::user()->role == 1)
                      <form method="POST" role="form" action="{{route('add_guest')}}">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -31,7 +31,7 @@
                             @endforeach
                         </select>
                         <button type='submit' class="btn btn-primary">Predaj</button>
-                    </div>                    
+                    </div>
                     </form>
                     @endif
                      <hr>
@@ -52,14 +52,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                       @foreach ($guests as $guest)
                       <tr>
                         <!-- <td scope="col">{{$guest->id}}</td> -->
                         <!-- <td scope="col">{{$guest->name}}</td>  -->
                         <td><a href="" class="update" data-name="name" data-type="text" data-pk="{{ $guest->id }}" data-title="Enter name">{{ $guest->name }}</a></td>
                         <!-- <td scope="col">{{$guest->surname}}</td> -->
-                        <td><a href="" class="update" data-name="surname" data-type="text" data-pk="{{ $guest->id }}" data-title="Enter surname">{{ $guest->surname }}</a></td>                       
+                        <td><a href="" class="update" data-name="surname" data-type="text" data-pk="{{ $guest->id }}" data-title="Enter surname">{{ $guest->surname }}</a></td>
                         <!-- <td scope="col">{{$guest->email}}</td> -->
                         <!-- <td scope="col">{{$guest->jmbag}}</td> -->
                         <td><a href="" class="update" data-name="jmbag" data-type="text" data-pk="{{ $guest->id }}" data-title="Enter JMBAG">{{ $guest->jmbag }}</a></td>
@@ -74,7 +74,7 @@
                             @else
                             <a class="deleteTicket btn btn-xs btn-success" data-id="{{ $guest->id }}"><i class="fas fa-check"></i></a>
                             @endif
-                        </td>                                                    
+                        </td>
                     </tr>
                       @endforeach
                     </tbody>
@@ -84,7 +84,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
+<script type="text/javascript" defer>
 
 function myFunction() {
   // Declare variables
@@ -106,7 +106,7 @@ function myFunction() {
       }
     }
   }
-} 
+}
 
 $.fn.editable.defaults.mode = 'inline';
 
