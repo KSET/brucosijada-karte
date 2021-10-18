@@ -116,8 +116,6 @@ function myFunction() {
   }
 }
 
-$.fn.editable.defaults.mode = 'inline';
-
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': '{{ csrf_token() }}'
