@@ -84,6 +84,14 @@
         </div>
     </div>
 </div>
+<style>
+    a.update:empty::before {
+        content: "Empty";
+        color: red;
+        text-decoration: underline;
+        font-style: italic;
+    }
+</style>
 <script type="text/javascript" defer>
 
 function myFunction() {
