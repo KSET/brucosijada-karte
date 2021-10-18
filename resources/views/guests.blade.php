@@ -138,6 +138,9 @@ $( document ).ready(function() {
                 type: "POST",
                 url: "{{ route('update_guest') }}",
                 data: data,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
             });
         })
     ;
