@@ -118,13 +118,29 @@ $.ajaxSetup({
 });
 
 $( document ).ready(function() {
-    $('.update').editable({
-        url: "{{ route('update_guest') }}",
-        type: 'text',
-        pk: 1,
-        name: 'name',
-        title: 'Enter name'
-    });
+    $('.update')
+        .attr('contenteditable', true)
+        .keypress(function(event) {
+            if (event.key !== 'Enter') {
+                return;
+            }
+
+            var $el = $(this);
+            var data = {
+                pk: $el.attr('data-pk'),
+                name: $el.attr('data-name'),
+                value: $el.text(),
+            };
+
+            event.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('update_guest') }}",
+                data: data,
+            });
+        })
+    ;
 });
 
 $(".deleteProduct").click(function(){
