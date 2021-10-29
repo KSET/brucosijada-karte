@@ -15,7 +15,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -49,13 +48,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                                @if (Auth:check())
-                                @if (Auth:user()->role == 3 || Auth:user()->role == 1)
+                                @if (Auth::check())
+                                @if (Auth::user()->role == 3 || Auth::user()->role == 1)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('guests') }}">{{ __('Brucoši') }}</a>
                                 </li>
                                 @endif
-                                @if (Auth:user()->role == 2 || Auth:user()->role == 1)
+                                @if (Auth::user()->role == 2 || Auth::user()->role == 1)
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Ulaz
@@ -68,7 +67,7 @@
                                 </li>
 
                                 @endif
-                                @if (Auth:user()->role == 1)
+                                @if (Auth::user()->role == 1)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('tags') }}">{{ __('Tags') }}</a>
                                 </li>
@@ -92,7 +91,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route:has('login'))
+                            @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Prijava') }}</a>
                                 </li>
@@ -102,7 +101,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth:user()->name }}
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
