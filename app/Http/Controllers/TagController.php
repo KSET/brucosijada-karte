@@ -25,13 +25,26 @@ class TagController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    { 
-        $tags=Tag::where('deleted', '=', 0)->get();
+    {
         $counter = [];
-        foreach ($tags as $tag){
-            $counter[$tag->name]=Guest::where([['deleted', '=', 0],['tag', '=', $tag->name]])->count();
+
+        $tags = Tag::where('deleted', '=', 0)->get();
+        foreach ($tags as $tag) {
+            $counter[$tag->name] = [
+                'total' => 0,
+                'bought' => 0,
+                'entered' => 0,
+            ];
         }
-        return view('tags')->with(compact('tags','counter'));
+
+        $users = Guest::where(['deleted', '=', false]);
+        foreach ($users as $user) {
+            $counter[$user->tag]['total'] += 1;
+            $counter[$user->tag]['bought'] += (bool) $user->bought;
+            $counter[$user->tag]['entered'] += (bool) $user->entered;
+        }
+
+        return view('tags')->with(compact('tags', 'counter'));
     }
 
     public function update_tag(Request $request)

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Guest extends Model
 {
     use HasFactory;
-    
+
     protected $table='guests';
 
     protected $fillable = [
@@ -17,6 +17,9 @@ class Guest extends Model
         'jmbag',
         'email',
         'phone',
-        'tag'
+        'tag',
+        'bought',
+        'entered',
+        'deleted',
     ];
 }
