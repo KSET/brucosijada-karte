@@ -37,7 +37,7 @@ class TagController extends Controller
             ];
         }
 
-        $users = Guest::where(['deleted', '=', false]);
+        $users = Guest::where('deleted', '=', false)->get();
         foreach ($users as $user) {
             $counter[$user->tag]['total'] += 1;
             $counter[$user->tag]['bought'] += (bool) $user->bought;
