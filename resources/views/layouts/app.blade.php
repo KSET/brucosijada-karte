@@ -8,7 +8,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"  type='image/x-icon'>
     <title> {{ config("#".'app.name', '#BRUCIFER') }}</title>
 
@@ -16,7 +15,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
