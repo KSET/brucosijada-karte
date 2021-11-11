@@ -17,6 +17,16 @@
                     <div class="alert alert-info">{{ Session::get('message') }}</div>
                     @endif
                     @csrf
+                     @if (Auth::user()->role == 1)
+                     <form method="POST" role="form" action="{{route('add_privilege')}}">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="name">Dodaj na popis:</label>
+                        <input type="text" name="name" id="name" placeholder="Ime">
+                        <button type='submit' class="btn btn-primary">Predaj</button>
+                    </div>
+                    </form>
+                    @endif
                     <table class="table">
                     <thead>
                         <tr>

@@ -44,6 +44,7 @@ Route::post('/update_privilege', [App\Http\Controllers\PrivilegeController::clas
 Route::post('delete/tag/{id}', [App\Http\Controllers\TagController::class, 'delete_tag'])->name('delete_tag');
 Route::post('delete/privilege/{id}', [App\Http\Controllers\PrivilegeController::class, 'delete_privilege'])->name('delete_privilege');
 Route::post('/add_tag', [App\Http\Controllers\TagController::class, 'add_tag'])->name('add_tag');
+Route::post('/add_privilege', [App\Http\Controllers\PrivilegeController::class, 'add_privilege'])->name('add_privilege');
 Route::post('/add_guest', [App\Http\Controllers\GuestController::class, 'add_guest'])->name('add_guest');
 Route::get('/gates', [App\Http\Controllers\GuestController::class, 'gates'])->name('gates');
 Route::post('/update_user', [App\Http\Controllers\UserController::class, 'update_user'])->name('update_user');

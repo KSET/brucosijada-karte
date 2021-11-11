@@ -53,13 +53,13 @@ class PrivilegeController extends Controller
         return response()->json(['success' => 'success']);
     }
 
-    public function add_tag(){
+    public function add_privilege(){
         if (request('name') == NULL){
             Session::flash('message', "Name cannot be empty!");
         }else{
-            $tag = new Tag;
-            $tag->name = request('name');
-            $tag->save();
+            $privilege = new Privilege;
+            $privilege->name = request('name');
+            $privilege->save();
             Session::flash('message', "Privilege added!");
         }
         return redirect()->back();   
