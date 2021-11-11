@@ -34,6 +34,8 @@
                         <!-- <th scope="col">#ID</th> -->
                         <th scope="col">Name</th>
                         <th scope="col">Count</th>
+                        <th scope="col">Bought</th>
+                        <th scope="col">Entered</th>
                         <th scope="col">Options</th>
                         </tr>
                     </thead>
@@ -43,6 +45,8 @@
                           <!-- <td scope="col">{{$tag->id}}</td> -->
                           <td><a href="" class="update" data-name="name" data-type="text" data-pk="{{ $tag->id }}" data-title="Enter name">{{ $tag->name }}</a></td>
                           <td scope="col">{{$counter[$tag->name]}}</td> 
+                          <td scope="col">{{$counter[$tag->bought==1]}}</td> 
+                          <td scope="col">{{$counter[$tag->entered==1]}}</td> 
                           <td scope="col">
                             <a class="deleteTag btn btn-xs btn-warning" data-id="{{ $tag->id }}"><i class="fas fa-trash"></i></a>
                           </td>

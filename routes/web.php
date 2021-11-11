@@ -40,7 +40,9 @@ Route::post('delete/guest/{id}', [App\Http\Controllers\GuestController::class, '
 Route::post('buy/ticket/{id}', [App\Http\Controllers\GuestController::class, 'buy_ticket'])->name('buy_ticket');
 Route::post('delete/ticket/{id}', [App\Http\Controllers\GuestController::class, 'delete_ticket'])->name('delete_ticket');
 Route::post('/update_tag', [App\Http\Controllers\TagController::class, 'update_tag'])->name('update_tag');
+Route::post('/update_privilege', [App\Http\Controllers\PrivilegeController::class, 'update_privilege'])->name('update_privilege');
 Route::post('delete/tag/{id}', [App\Http\Controllers\TagController::class, 'delete_tag'])->name('delete_tag');
+Route::post('delete/privilege/{id}', [App\Http\Controllers\PrivilegeController::class, 'delete_privilege'])->name('delete_privilege');
 Route::post('/add_tag', [App\Http\Controllers\TagController::class, 'add_tag'])->name('add_tag');
 Route::post('/add_guest', [App\Http\Controllers\GuestController::class, 'add_guest'])->name('add_guest');
 Route::get('/gates', [App\Http\Controllers\GuestController::class, 'gates'])->name('gates');

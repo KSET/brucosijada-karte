@@ -34,4 +34,36 @@ class PrivilegeController extends Controller
         }
         return view('privileges')->with(compact('privileges','counter','tags'));
     }
+
+    public function update_privilege(Request $request)
+    {
+        if ($request->ajax()) {
+            Privilege::find($request->pk)
+                ->update([
+                    $request->name => $request->value
+                ]);
+  
+            return response()->json(['success' => true]);
+        }
+    }
+
+    public function delete_privilege($id)
+    {
+        DB::table("privileges")->where('id', '=', $id)->update(['deleted'=>1]);
+        return response()->json(['success' => 'success']);
+    }
+
+    public function add_tag(){
+        if (request('name') == NULL){
+            Session::flash('message', "Name cannot be empty!");
+        }else{
+            $tag = new Tag;
+            $tag->name = request('name');
+            $tag->save();
+            Session::flash('message', "Privilege added!");
+        }
+        return redirect()->back();   
+    }
 }
+
+

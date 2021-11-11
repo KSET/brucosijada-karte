@@ -23,6 +23,7 @@
                         <th scope="col">#ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Count</th>
+                        <th scope="col">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +32,9 @@
                           <td scope="col">{{$privilege->id}}</td>
                           <td>{{ $privilege->name }}</td>
                           <td scope="col">{{$counter[$privilege->id]}}</td> 
+                          <td scope="col">
+                            <a class="deletePrivilege btn btn-xs btn-warning" data-id="{{ $tag->id }}"><i class="fas fa-trash"></i></a>
+                          </td>
                     </tr>
                     @endforeach
                     </tbody>
@@ -42,3 +46,38 @@
     </div>
 </div>
 @endsection
+<script type="text/javascript">
+$.fn.editable.defaults.mode = 'inline';
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    }
+});
+
+$('.update').editable({
+    url: "{{ route('update_privilege') }}",
+    type: 'text',
+    pk: 1,
+    name: 'name',
+    title: 'Enter name'
+});
+
+
+$(".deletePrivilege").click(function(){
+	        var id = $(this).data("id");
+	        var token = '{{ csrf_token() }}';
+	        $.ajax(
+	        {
+	            method:'POST',
+	            url: "/delete/privilege/"+id,
+	            data: {_token: token},
+	            success: function(data)
+	            {
+	                toastr.success('Successfully!','Delete');
+                    window.location.reload();
+	            }
+	        });
+	    });
+
+</script>
