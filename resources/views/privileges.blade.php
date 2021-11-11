@@ -55,7 +55,6 @@
         </div>
     </div>
 </div>
-@endsection
 <script type="text/javascript">
 $.fn.editable.defaults.mode = 'inline';
 
@@ -91,3 +90,4 @@ $(".deletePrivilege").click(function(){
 	    });
 
 </script>
+@endsection
