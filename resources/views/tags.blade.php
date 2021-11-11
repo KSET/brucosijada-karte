@@ -54,14 +54,6 @@
                     @endforeach
                     </tbody>
                     </table>
-                    <!--
-                    TAGS
-                        {{ dd($tags) }}
-                    -->
-                    <!--
-                    COUNTER
-                        {{ dd($counter) }}
-                    -->
                 </div>
             </div>
         </div>
