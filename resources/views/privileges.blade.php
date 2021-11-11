@@ -41,9 +41,9 @@
                       <tr>
                           <td scope="col">{{$privilege->id}}</td>
                           <td>{{ $privilege->name }}</td>
-                          <td scope="col">{{$counter[$privilege->id]}}</td> 
+                          <td scope="col">{{$counter[$privilege->id]}}</td>
                           <td scope="col">
-                            <a class="deletePrivilege btn btn-xs btn-warning" data-id="{{ $tag->id }}"><i class="fas fa-trash"></i></a>
+                            <a class="deletePrivilege btn btn-xs btn-warning" data-id="{{ $privilege->id }}"><i class="fas fa-trash"></i></a>
                           </td>
                     </tr>
                     @endforeach
