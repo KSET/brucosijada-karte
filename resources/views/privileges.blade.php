@@ -55,39 +55,21 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-$.fn.editable.defaults.mode = 'inline';
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-    }
-});
-
-$('.update').editable({
-    url: "{{ route('update_privilege') }}",
-    type: 'text',
-    pk: 1,
-    name: 'name',
-    title: 'Enter name'
-});
-
-
+<script defer>
 $(".deletePrivilege").click(function(){
-	        var id = $(this).data("id");
-	        var token = '{{ csrf_token() }}';
-	        $.ajax(
-	        {
-	            method:'POST',
-	            url: "/delete/privilege/"+id,
-	            data: {_token: token},
-	            success: function(data)
-	            {
-	                toastr.success('Successfully!','Delete');
-                    window.location.reload();
-	            }
-	        });
-	    });
-
+    var id = $(this).data("id");
+    var token = '{{ csrf_token() }}';
+    $.ajax(
+    {
+        method:'POST',
+        url: "/delete/privilege/"+id,
+        data: {_token: token},
+        success: function(data)
+        {
+            toastr.success('Successfully!','Delete');
+            window.location.reload();
+        }
+    });
+});
 </script>
 @endsection
