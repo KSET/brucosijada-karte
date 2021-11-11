@@ -17,14 +17,14 @@
                     @if (Session::has('message'))
                     <div class="alert alert-info">{{ Session::get('message') }}</div>
                     @endif
-                    @if (Auth::user()->role == 1) 
+                    @if (Auth::user()->role == 1)
                     <form method="POST" role="form" action="{{route('add_tag')}}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name">Add new Tag</label>
                         <input type="text" name="name" id="name" placeholder="Name">
                         <button type='submit' class="btn btn-primary">Submit</button>
-                    </div>                    
+                    </div>
                     </form>
                     @endif
                     @csrf
@@ -44,9 +44,9 @@
                       <tr>
                           <!-- <td scope="col">{{$tag->id}}</td> -->
                           <td><a href="" class="update" data-name="name" data-type="text" data-pk="{{ $tag->id }}" data-title="Enter name">{{ $tag->name }}</a></td>
-                          <td scope="col">{{$counter[$tag->name]}}</td> 
-                          <td scope="col">{{$counter[$tag->bought==1]}}</td> 
-                          <td scope="col">{{$counter[$tag->entered==1]}}</td> 
+                          <td scope="col">{{$counter[$tag->name]['total']}}</td>
+                          <td scope="col">{{$counter[$tag->name]['bought']}}</td>
+                          <td scope="col">{{$counter[$tag->name]['entered']}}</td>
                           <td scope="col">
                             <a class="deleteTag btn btn-xs btn-warning" data-id="{{ $tag->id }}"><i class="fas fa-trash"></i></a>
                           </td>
