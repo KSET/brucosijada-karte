@@ -6,6 +6,7 @@ use App\Models\User;
 use Session;
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use DB;
 
 class PrivilegeController extends Controller
 {

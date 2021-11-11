@@ -89,5 +89,6 @@ $(".deletePrivilege").click(function(){
 	        });
 	    });
 
+
 </script>
 @endsection
