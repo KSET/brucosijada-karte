@@ -30,6 +30,7 @@ services:
       - ./app/brucosijada-karte:/var/www/html/brucosijada-karte
     ports:
       - 1311:80
+    command: php artisan migrate:refresh
 
 networks:
    default:
